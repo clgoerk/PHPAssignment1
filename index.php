@@ -40,6 +40,7 @@
           <td><?php echo $movie['year']; ?></td>
           <td><?php echo $movie['genre']; ?></td>
           <td><?php echo $movie['director']; ?></td>
+          <td><?php echo $movie['duration']; ?></td>
           <td><?php echo $movie['language']; ?></td>
           <td><?php echo $movie['rating']; ?></td>
         </tr>
