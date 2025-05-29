@@ -38,7 +38,7 @@ table {
 .movie-photo {
   display: block;
   margin: 0 auto;
-  height: 100px; /* or whatever size you want */
+  height: 100px; 
 }
 
 th, td {
@@ -68,11 +68,27 @@ tr:hover {
   cursor: pointer;
 }
 
+td form input[type="submit"] {
+  background-color: transparent;
+  color: #0f0; 
+  border: 2px solid #0f0;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s ease-in-out;
+}
+
+td form input[type="submit"]:hover {
+  background-color: #0f0;
+  color: #000;
+}
+
 /* Link styling */
 a.button-link {
-  display: block; /* or flex */
+  display: block;
   width: fit-content;
-  margin: 20px auto; /* center horizontally */
+  margin: 20px auto; 
   padding: 12px 20px;
   background-color: #0f0;
   color: #000;
@@ -147,9 +163,4 @@ form {
   background-color: #0c0;
 }
 
-/* Responsive tweaks */
-@media (max-width: 640px) {
-  form {
-    padding: 16px;
-  }
-}
+
