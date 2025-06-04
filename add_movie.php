@@ -26,9 +26,9 @@ if (isset($_FILES['file1'])) {
 // get data from the form
 $title = filter_input(INPUT_POST, 'title');
 $year = filter_input(INPUT_POST, 'year');
-$genre = filter_input(INPUT_POST, 'genre');
+$genreID = filter_input(INPUT_POST, 'genreID', FILTER_VALIDATE_INT);
 $director = filter_input(INPUT_POST, 'director');
-$duration = filter_input(INPUT_POST, 'duration'); // selected radio button
+$duration = filter_input(INPUT_POST, 'duration');
 $language = filter_input(INPUT_POST, 'language');
 $rating = filter_input(INPUT_POST, 'rating');
 $image_name = $_FILES['file1']['name'];
@@ -51,7 +51,7 @@ foreach ($movies as $movie) {
 
 // Validate required movie fields
 if (
-  $title == null || $year == null || $genre == null ||
+  $title == null || $year == null || $genreID == null ||
   $director == null || $duration == null || $language == null || $rating == null
 ) {
   $_SESSION["add_error"] = "Invalid movie data, check all fields and try again.";
@@ -60,14 +60,14 @@ if (
 } else {
   // Add the movie to the database
   $query = 'INSERT INTO movies
-    (title, year, genre, director, duration, language, rating, imageName)
+    (title, year, genreID, director, duration, language, rating, imageName)
     VALUES
-    (:title, :year, :genre, :director, :duration, :language, :rating, :imageName)';
+    (:title, :year, :genreID, :director, :duration, :language, :rating, :imageName)';
 
   $statement = $db->prepare($query);
   $statement->bindValue(':title', $title);
   $statement->bindValue(':year', $year);
-  $statement->bindValue(':genre', $genre);
+  $statement->bindValue(':genreID', $genreID);
   $statement->bindValue(':director', $director);
   $statement->bindValue(':duration', $duration);
   $statement->bindValue(':language', $language);
@@ -78,7 +78,6 @@ if (
 }
 
 // redirect to confirmation page
-$url = "confirmation.php";
-header("Location: " . $url);
+header("Location: confirmation.php");
 die();
 ?>

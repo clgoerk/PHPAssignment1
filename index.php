@@ -1,8 +1,18 @@
 <?php
   session_start();
+
+  if (!isset($_SESSION["isLoggedIn"])) {
+    header("Location: login_form.php");
+    die();
+  }
+
   require("database.php");
 
-  $queryMovies = 'SELECT * FROM movies';
+  $queryMovies = '
+    SELECT m.*, g.genreName
+    FROM movies m
+    LEFT JOIN genre g ON m.genreID = g.genreID
+  ';
   $statement1 = $db->prepare($queryMovies);
   $statement1->execute();
   $movies = $statement1->fetchAll();
@@ -34,12 +44,14 @@
         <th>Language</th>
         <th>Rating</th>
         <th>Photo</th>
+        <th>Update</th>
+        <th>Delete</th>
       </tr>
       <?php foreach ($movies as $movie): ?>
         <tr>
           <td><?php echo $movie['title']; ?></td>
           <td><?php echo $movie['year']; ?></td>
-          <td><?php echo $movie['genre']; ?></td>
+          <td><?php echo $movie['genreName']; ?></td>
           <td><?php echo $movie['director']; ?></td>
           <td><?php echo $movie['duration']; ?></td>
           <td><?php echo $movie['language']; ?></td>
@@ -66,6 +78,7 @@
     </table>
 
     <p><a href="add_movie_form.php" class="button-link">Add Movie</a></p>
+    <p><a href="logout.php" class="button-link">Logout</a></p>
   </main>
 
   <?php include("footer.php"); ?>

@@ -14,31 +14,124 @@ body {
   padding-top: 50px;
 }
 
-/* Header styling */
+/* Headings */
 h1, h2 {
   margin-bottom: 20px;
   color: #0f0;
   text-align: center;
 }
 
-/* paragraph */
+/* Paragraphs */
 p {
-  text-align: center; 
+  text-align: center;
 }
 
-/* Table styling */
+a:hover {
+  text-decoration: underline;
+}
+
+/* Button Link Styling */
+a.button-link {
+  display: block;
+  width: fit-content;
+  margin: 20px auto;
+  padding: 12px 20px;
+  background-color: #0f0;
+  color: #000;
+  border: none;
+  border-radius: 4px;
+  font-size: 1em;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.2s ease-in-out;
+}
+
+a.button-link:hover {
+  background-color: #0c0;
+  text-decoration: none;
+}
+
+/* Form Container */
+form {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #1a1a1a;
+  padding: 20px;
+  border: 1px solid #333;
+  border-radius: 8px;
+}
+
+/* Form Labels */
+#data label {
+  display: block;
+  margin-top: 12px;
+  font-weight: bold;
+  color: #0f0;
+}
+
+/* Input Fields */
+#data input[type="text"],
+#data input[type="password"],
+#data input[type="date"],
+#data input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  background-color: #222;
+  border: 1px solid #444;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 1em;
+}
+
+#data input[type="file"] {
+  padding: 5px;
+}
+
+/* Select Field */
+#data select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  background-color: #222;
+  border: 1px solid #444;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 1em;
+  appearance: none;
+}
+
+#data select:focus {
+  outline: none;
+  border-color: #0f0;
+}
+
+/* Submit Button */
+#buttons input[type="submit"] {
+  margin-top: 20px;
+  padding: 12px 20px;
+  background-color: #0f0;
+  color: #000;
+  border: none;
+  border-radius: 4px;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+#buttons input[type="submit"]:hover {
+  background-color: #0c0;
+}
+
+/* Movie Table */
 table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 10px;
   background-color: #1c1c1c;
   border: 1px solid #333;
-}
-
-.movie-photo {
-  display: block;
-  margin: 0 auto;
-  height: 100px; 
 }
 
 th, td {
@@ -68,9 +161,17 @@ tr:hover {
   cursor: pointer;
 }
 
+/* Image Thumbnails */
+.movie-photo {
+  display: block;
+  margin: 0 auto;
+  height: 100px;
+}
+
+/* Action Buttons in Table */
 td form input[type="submit"] {
   background-color: transparent;
-  color: #0f0; 
+  color: #0f0;
   border: 2px solid #0f0;
   padding: 6px 12px;
   border-radius: 4px;
@@ -84,83 +185,10 @@ td form input[type="submit"]:hover {
   color: #000;
 }
 
-/* Link styling */
-a.button-link {
-  display: block;
-  width: fit-content;
-  margin: 20px auto; 
-  padding: 12px 20px;
-  background-color: #0f0;
-  color: #000;
-  border: none;
-  border-radius: 4px;
-  font-size: 1em;
-  font-weight: bold;
-  text-align: center;
-  text-decoration: none;
-  transition: background-color 0.2s ease-in-out;
+/* Responsive Form */
+@media (max-width: 768px) {
+  form {
+    width: 90%;
+    padding: 16px;
+  }
 }
-
-a.button-link:hover {
-  background-color: #0c0;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-/* Form container */
-form {
-  max-width: 600px;
-  margin: 0 auto;
-  background-color: #1a1a1a;
-  padding: 20px;
-  border: 1px solid #333;
-  border-radius: 8px;
-}
-
-/* Labels and inputs */
-#data label {
-  display: block;
-  margin-top: 12px;
-  font-weight: bold;
-  color: #0f0;
-}
-
-#data input[type="text"],
-#data input[type="date"],
-#data input[type="file"] {
-  width: 100%;
-  padding: 10px;
-  margin-top: 6px;
-  background-color: #222;
-  border: 1px solid #444;
-  border-radius: 4px;
-  color: #fff;
-  font-size: 1em;
-}
-
-#data input[type="file"] {
-  padding: 5px;
-}
-
-/* Submit button styling */
-#buttons input[type="submit"] {
-  margin-top: 20px;
-  padding: 12px 20px;
-  background-color: #0f0;
-  color: #000;
-  border: none;
-  border-radius: 4px;
-  font-size: 1em;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
-}
-
-#buttons input[type="submit"]:hover {
-  background-color: #0c0;
-}
-
-
