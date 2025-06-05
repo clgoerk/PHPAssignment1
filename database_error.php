@@ -6,7 +6,7 @@
 <html>
   <head>
     <title>Movie Manager - Database Error</title>
-    <link rel="stylesheet" type="txt/css" href="css/main.css" />
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
   </head>
   <body>
     <?php include("header.php"); ?>
@@ -19,7 +19,7 @@
       <p>MySQL must be running.</p>
       <p>Error message: <?php echo $_SESSION["database_error"]; ?></p>
 
-      <p><a href="index.php">View Contact List</a></p>
+      <p><a href="index.php" class="button-link">View Contact List</a></p>
     </main>
 
     <?php include("footer.php"); ?>
