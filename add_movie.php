@@ -1,9 +1,4 @@
 <?php
-
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 session_start();
 
 require_once 'image_util.php'; // the process_image function
@@ -33,6 +28,11 @@ $language = filter_input(INPUT_POST, 'language');
 $rating = filter_input(INPUT_POST, 'rating');
 $image_name = $_FILES['file1']['name'];
 
+$i = strrpos($file_name, '.');
+$image_name = substr($file_name, 0, $i);
+$ext = substr($file_name, $i);
+$image_name_100 = $image_name . '_100' . $ext;
+
 require_once('database.php');
 $queryMovies = 'SELECT * FROM movies';
 $statement1 = $db->prepare($queryMovies);
@@ -50,10 +50,8 @@ foreach ($movies as $movie) {
 }
 
 // Validate required movie fields
-if (
-  $title == null || $year == null || $genreID == null ||
-  $director == null || $duration == null || $language == null || $rating == null
-) {
+if ($title == null || $year == null || $genreID == null ||
+    $director == null || $duration == null || $language == null || $rating == null) {
   $_SESSION["add_error"] = "Invalid movie data, check all fields and try again.";
   header("Location: error.php");
   die();
