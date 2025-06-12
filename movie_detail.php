@@ -2,12 +2,14 @@
 session_start();
 require_once("database.php");
 
+// Get movie ID from POST
 $movie_id = filter_input(INPUT_POST, 'movie_id', FILTER_VALIDATE_INT);
 if (!$movie_id) {
     header("Location: index.php");
     exit;
 }
 
+// Fetch movie info including genre name
 $query = '
   SELECT m.*, g.genreName 
   FROM movies m 
@@ -25,14 +27,15 @@ if (!$movie) {
     exit;
 }
 
+// Preserve extension and build _400 version
 $imageName = $movie['imageName']; 
 $dotPosition = strrpos($imageName, '.');
 $baseName = substr($imageName, 0, $dotPosition);
-$extension = strtolower(substr($imageName, $dotPosition));
+$extension = strtolower(substr($imageName, $dotPosition)); 
 $imageName_400 = $baseName . '_400' . $extension;
 
-// Absolute path check for file existence
-if (!file_exists(__DIR__ . "/images/" . $imageName_400)) {
+// Fallback to placeholder if file not found
+if (!file_exists("images/" . $imageName_400)) {
     $imageName_400 = "placeholder_400.png";
 }
 ?>

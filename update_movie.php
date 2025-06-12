@@ -54,8 +54,8 @@ $image_name = $current_image_name;
 $base_dir = 'images/';
 
 if ($image && $image['error'] === UPLOAD_ERR_OK) {
-  // Remove old images
-  if ($current_image_name) {
+  // Remove old images only if not using placeholder
+  if ($current_image_name && !str_starts_with($current_image_name, 'placeholder')) {
     $dot = strrpos($current_image_name, '_100.');
     if ($dot !== false) {
       $original_name = substr($current_image_name, 0, $dot) . substr($current_image_name, $dot + 4);
@@ -79,7 +79,7 @@ if ($image && $image['error'] === UPLOAD_ERR_OK) {
   $dot_position = strrpos($original_filename, '.');
   $name_without_ext = substr($original_filename, 0, $dot_position);
   $extension = substr($original_filename, $dot_position);
-  $image_name = $name_without_ext . '_100' . $extension;
+  $image_name = $original_filename;
 }
 
 // Update movie

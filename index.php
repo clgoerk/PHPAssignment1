@@ -44,22 +44,29 @@
         <th>Language</th>
         <th>Rating</th>
         <th>Photo</th>
+        <th>Details</th>
         <th>Update</th>
         <th>Delete</th>
       </tr>
       <?php foreach ($movies as $movie): ?>
         <tr>
-          <td><?php echo $movie['title']; ?></td>
-          <td><?php echo $movie['year']; ?></td>
-          <td><?php echo $movie['genreName']; ?></td>
-          <td><?php echo $movie['director']; ?></td>
-          <td><?php echo $movie['duration']; ?></td>
-          <td><?php echo $movie['language']; ?></td>
-          <td><?php echo $movie['rating']; ?></td>
+          <td><?php echo htmlspecialchars($movie['title']); ?></td>
+          <td><?php echo htmlspecialchars($movie['year']); ?></td>
+          <td><?php echo htmlspecialchars($movie['genreName']); ?></td>
+          <td><?php echo htmlspecialchars($movie['director']); ?></td>
+          <td><?php echo htmlspecialchars($movie['duration']); ?></td>
+          <td><?php echo htmlspecialchars($movie['language']); ?></td>
+          <td><?php echo htmlspecialchars($movie['rating']); ?></td>
           <td>
             <img class="movie-photo" src="<?php echo htmlspecialchars('./images/' . $movie['imageName']); ?>" 
                  alt="<?php echo htmlspecialchars($movie['title']); ?>" 
                  style="height: 100px;" />
+          </td>
+          <td>
+            <form action="movie_detail.php" method="post">
+              <input type="hidden" name="movie_id" value="<?php echo $movie['movieID']; ?>" />
+              <input type="submit" value="Details" />
+            </form>
           </td>
           <td>
             <form action="update_movie_form.php" method="post">
