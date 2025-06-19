@@ -52,6 +52,51 @@ a.button-link:hover {
   text-decoration: none;
 }
 
+/* Genre Filter */
+.genre-filter {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.genre-filter .select-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 300px;
+}
+
+.genre-filter select {
+  width: 100%;
+  padding: 12px 16px;
+  background-color: #1a1a1a;
+  border: 2px solid #fff;
+  border-radius: 6px;
+  color: #0f0;
+  font-size: 1em;
+  font-weight: bold;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+}
+
+.genre-filter .select-wrapper::after {
+  content: '▼';
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #0f0;
+  pointer-events: none;
+}
+
+.genre-filter select:hover,
+.genre-filter select:focus {
+  border-color: #0c0;
+  background-color: #111;
+  box-shadow: 0 0 5px #0f0;
+  outline: none;
+}
+
 /* Form Container */
 form {
   max-width: 600px;

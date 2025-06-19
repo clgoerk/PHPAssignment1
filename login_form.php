@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -9,7 +13,20 @@
 
     <main>
       <h2>Login</h2>
-      
+
+      <?php
+        if (isset($_SESSION['lockout_remaining'])) {
+          $remaining = (int)$_SESSION['lockout_remaining'];
+          echo '<p id="countdown" data-remaining="' . $remaining . '" style="color: red; font-weight: bold;">Account locked. Please wait ' . $remaining . ' seconds.</p>';
+          
+          unset($_SESSION['login_error']);
+          unset($_SESSION['lockout_remaining']);
+        } elseif (isset($_SESSION['login_error'])) {
+          echo '<p style="color: red; font-weight: bold;">' . htmlspecialchars($_SESSION['login_error']) . '</p>';
+          unset($_SESSION['login_error']);
+        }
+      ?>
+      <br>
       <form action="login.php" method="post" id="login_form" autocomplete="off" enctype="multipart/form-data">
         <div id="data">
           <label for="user_name">User Name:</label>
@@ -28,5 +45,7 @@
     </main>
 
     <?php include("footer.php"); ?>
+
+    <script src="scripts/app.js"></script>
   </body>
 </html>
